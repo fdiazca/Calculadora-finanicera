@@ -1,0 +1,52 @@
+# Definición de la función para valor presente
+
+def vpresente(futuro, tasa, tiempo):
+    return futuro / ((1 + tasa) ** tiempo)
+
+# Definición de la función para valor futuro
+
+def vfuturo(presente, tasa, tiempo):
+    return presente * ((1 + tasa) ** tiempo)
+
+# Definición para la función anualidad dado un presente y un futuro
+
+def anualidadp(presente, tasa, tiempo):
+    return (presente * tasa) / ( 1 -  ((1 + tasa) ** (-tiempo)))
+
+def anualidadf(futuro, tasa, tiempo):
+    return (futuro * tasa) / ( ((1 + tasa) ** (tiempo)) - 1)
+
+
+# Imprimir el menu en un bucle
+
+while True:
+    print("por favor elige una opción:")
+    print("1. calcular valor presente, dado un valor futuro")
+    print("2. calcular valor futuro, dado un valor presente")
+    print("3. calular una anualidad de un valor presente")
+    print("4. calcular una anualidad de un valor futuro")
+    # tomar la entrada del usuario
+    opcion = input("ingresa tu opción (1/2/3/4):  ")
+    # tomar la entra de los numeros
+    presente = float(input("ingresar el valor presente: $"))
+    futuro = float(input("ingresar el valor futuro: $"))
+    tiempo = int(input("ingrese el tiempo a evaluar  "))
+    tasa = float(input("ingresar la tasa en decimales respecto al tiempo: "))
+    # ejecutar la operacion matematica seleccionada
+    if opcion == '1':
+         print("el valor presente es $ ", vpresente(futuro, tasa, tiempo))
+    elif opcion == '2':
+        print("el valor futuro es $ ", vfuturo(presente, tasa, tiempo))
+    elif opcion == '3':
+        print("el valor de la anualidad es $ ", anualidadp(presente, tasa, tiempo))
+    elif opcion == '4':
+        print("el valor de la anualidad es $ ", anualidadf(futuro, tasa, tiempo))
+
+    else:
+        print("opcion invalida")
+        # continuar en el bucle o no
+    respuesta = input("deseas realizar otra operacion? (s/n):  ")
+    if respuesta.lower() == 'n':
+        break
+
+print("Programa finalizado. Gracias")
